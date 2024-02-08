@@ -34,7 +34,7 @@ namespace DefaultLibrary.Response
         /// <param name="properties"></param>
         /// <param name="method"></param>
         /// <param name="stackTrace"></param>
-        public void AddError(string message, string[]? properties = null, string? method = null, StackTrace? stackTrace = null)
+        public void AddError(string message, string[]? properties = null, string? method = null, string? stackTrace = null)
         {
             _errors.Add(new Error
             {

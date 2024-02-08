@@ -23,6 +23,6 @@ namespace DefaultLibrary.Shared
         /// <summary>
         /// Stack trace of the error
         /// </summary>
-        public StackTrace? StackTrace { get; set; }
+        public string? StackTrace { get; set; }
     }
 }

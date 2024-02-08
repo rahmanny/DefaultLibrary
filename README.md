@@ -18,7 +18,7 @@ public class SomeClass
         }
         catch (Exception e)
         {
-            response.AddError(e.Message, null, this.SomeMethod().ToString(), e.StackTrace);
+            response.AddError(e.Message, null, System.Reflection.MethodBase.GetCurrentMethod()?.Name, e.StackTrace);
         }
         return response;
     }
