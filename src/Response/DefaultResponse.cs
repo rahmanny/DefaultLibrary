@@ -13,6 +13,7 @@ namespace DefaultLibrary.Response
     {
         private readonly List<Error> _errors = new List<Error>();
         
+        
         /// <summary>
         /// Indicates if the response has errors
         /// </summary>
@@ -20,7 +21,7 @@ namespace DefaultLibrary.Response
         /// <summary>
         /// Status of the response
         /// </summary>
-        public Status Status { get; private set; }
+        public Status Status { get; set; }
         /// <summary>
         /// List of errors
         /// </summary>
