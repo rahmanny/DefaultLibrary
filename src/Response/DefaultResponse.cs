@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using DefaultLibrary.Shared;
 
 namespace DefaultLibrary.Response
@@ -43,6 +45,37 @@ namespace DefaultLibrary.Response
                 Method = method,
                 StackTrace = stackTrace
             });
+        }
+        
+        /// <summary>
+        /// Gets the last error message
+        /// </summary>
+        /// <returns></returns>
+        public string GetLastError()
+        {
+            return !HasErrors ? string.Empty : $"Method:{_errors.Last().Method}, Args:{string.Join(",", _errors.Last().Properties ?? Array.Empty<string>())}, Message:{_errors.Last().Message}, StackTrace:{_errors.Last().StackTrace}";
+        }
+        
+        /// <summary>
+        /// Gets all error messages
+        /// </summary>
+        /// <returns></returns>
+        public string GetAllErrors()
+        {
+            if (!HasErrors)
+            {
+                return string.Empty;
+            }
+            var sb = new StringBuilder();
+            for (var i = 0; i < _errors.Count; i++)
+            {
+                sb.Append($"Error[i]: Method:{_errors[i].Method}, Args:{string.Join(",", _errors[i].Properties ?? Array.Empty<string>())}, Message:{_errors[i].Message}, StackTrace:{_errors[i].StackTrace}");
+                if (i < _errors.Count - 1)
+                {
+                    sb.Append(Environment.NewLine);
+                }
+            }
+            return sb.ToString();
         }
     }
 }
