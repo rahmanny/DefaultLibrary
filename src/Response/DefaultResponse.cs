@@ -21,7 +21,7 @@ namespace DefaultLibrary.Response
         /// <summary>
         /// Status of the response
         /// </summary>
-        public Status Status { get; set; }
+        public Status? Status { get; set; }
         /// <summary>
         /// List of errors
         /// </summary>
@@ -43,7 +43,6 @@ namespace DefaultLibrary.Response
                 Method = method,
                 StackTrace = stackTrace
             });
-            Status = Status.Error;
         }
     }
 }
